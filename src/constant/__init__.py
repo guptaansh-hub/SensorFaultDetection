@@ -3,7 +3,7 @@ import os
 
 AWS_S3_BUCKET_NAME = "wafer-fault"
 MONGO_DATABASE_NAME = "ANSH"
-MONGO_COLLECTION_NAME = "waferfaults"
+MONGO_COLLECTION_NAME = "waferfault"
 
 
 TARGET_COLUMN = "quality"

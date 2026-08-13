@@ -48,7 +48,7 @@ class DataTransformation:
 
         try:
 
-            imputer_step = ('imputer',SimpleImputer(strategy='constant',fill_Value=0))
+            imputer_step = ('imputer',SimpleImputer(strategy='constant',fill_value=0))
             scaler_step = ('scaler',RobustScaler())
 
             preprocessor = Pipeline(

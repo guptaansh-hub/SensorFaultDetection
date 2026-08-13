@@ -32,7 +32,7 @@ class ModelTrainer:
 
         self.utils = MainUtils()
 
-        self.model = {
+        self.models = {
                        'XGBClassifier':XGBClassifier(),
                        'GradientBoostingClassifier' : GradientBoostingClassifier(),
                        'SVC':SVC(),
@@ -109,7 +109,15 @@ class ModelTrainer:
                             ) -> object:
         try:
 
-            model_param_grid = self.utils.read_yaml_file(self.model_trainer_config.model_config_file_path)["model_selction"]["model"][best_model_name]["search_param_grid"]
+            model_config = self.utils.read_yaml_file(
+             self.model_trainer_config.model_config_file_path
+            )
+
+            print("MODEL CONFIG PATH:", self.model_trainer_config.model_config_file_path)
+            print("MODEL CONFIG:", model_config)
+            print("BEST MODEL NAME:", best_model_name)
+
+            model_param_grid = model_config["model_selection"]["model"][best_model_name]["search_param_grid"]
 
 
             grid_search = GridSearchCV(
@@ -163,7 +171,7 @@ class ModelTrainer:
             best_model = self.finetune_best_model(
                 best_model_name = best_model_name,
                 best_model_object = best_model,
-                X_trsin = X_train,
+                X_train = X_train,
                 y_train = y_train
             )
 
